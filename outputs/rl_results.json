@@ -1,0 +1,78 @@
+{
+  "category": "watches_gifts",
+  "base_daily_demand": 1.1758241758241759,
+  "weekday_factors": [
+    1.134,
+    1.079,
+    1.086,
+    1.102,
+    0.944,
+    0.827,
+    0.83
+  ],
+  "scenarios": [
+    {
+      "elasticity": -1.2,
+      "inventory": 25,
+      "best_static_multiplier": 1.5,
+      "expected_revenue": {
+        "static": 31.342989536310554,
+        "q_learning": 31.046997607698238,
+        "dp_optimal": 31.342989536310554
+      },
+      "q_learning_share_of_optimum": 0.9905563593967508,
+      "dp_gain_over_static": 0.0,
+      "q_learning_gain_over_static": -0.009443640603249204,
+      "share_of_possible_gain_captured": null,
+      "simulated_q_minus_static": -0.30124000000000045,
+      "simulated_q_minus_static_se": 0.016927663797474478,
+      "sell_through": {
+        "static": 0.796024,
+        "q_learning": 0.861464,
+        "dp_optimal": 0.796024
+      }
+    },
+    {
+      "elasticity": -1.9166,
+      "inventory": 25,
+      "best_static_multiplier": 1.2,
+      "expected_revenue": {
+        "static": 27.333866363909923,
+        "q_learning": 27.674670684511515,
+        "dp_optimal": 28.042305957637346
+      },
+      "q_learning_share_of_optimum": 0.9868899771052635,
+      "dp_gain_over_static": 0.025918016291423873,
+      "q_learning_gain_over_static": 0.012468207609720672,
+      "share_of_possible_gain_captured": 0.48106334487668206,
+      "simulated_q_minus_static": 0.3275400000000074,
+      "simulated_q_minus_static_se": 0.023412217666577702,
+      "sell_through": {
+        "static": 0.880648,
+        "q_learning": 0.951648,
+        "dp_optimal": 0.95116
+      }
+    },
+    {
+      "elasticity": -3.0,
+      "inventory": 25,
+      "best_static_multiplier": 1.1,
+      "expected_revenue": {
+        "static": 25.807174688679464,
+        "q_learning": 26.23753000603492,
+        "dp_optimal": 26.660003666763792
+      },
+      "q_learning_share_of_optimum": 0.9841532782212046,
+      "dp_gain_over_static": 0.0330461969732172,
+      "q_learning_gain_over_static": 0.016675801305140014,
+      "share_of_possible_gain_captured": 0.5046208893161017,
+      "simulated_q_minus_static": 0.41745999999999606,
+      "simulated_q_minus_static_se": 0.02094919577073756,
+      "sell_through": {
+        "static": 0.915752,
+        "q_learning": 0.983376,
+        "dp_optimal": 0.981992
+      }
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "n_regions": 578,
+  "aa_false_positive_rate_units": {
+    "cuped": 0.0495,
+    "paired_cuped": 0.045,
+    "simple": 0.042
+  },
+  "noise_ladder": [
+    {
+      "step": "revenue, 4-week test, plain t-test",
+      "n_regions": 342,
+      "aa_std": 0.1004,
+      "approx_mde": 0.2812
+    },
+    {
+      "step": "+ CUPED (8-week pre-period)",
+      "n_regions": 342,
+      "aa_std": 0.0744,
+      "approx_mde": 0.2083
+    },
+    {
+      "step": "+ winsorised prices",
+      "n_regions": 342,
+      "aa_std": 0.0586,
+      "approx_mde": 0.164
+    },
+    {
+      "step": "+ 16-week pre-period",
+      "n_regions": 559,
+      "aa_std": 0.0511,
+      "approx_mde": 0.1431
+    },
+    {
+      "step": "+ 8-week test",
+      "n_regions": 578,
+      "aa_std": 0.0344,
+      "approx_mde": 0.0963
+    },
+    {
+      "step": "+ matched pairs",
+      "n_regions": 578,
+      "aa_std": 0.0387,
+      "approx_mde": 0.1085
+    },
+    {
+      "step": "units instead of revenue",
+      "n_regions": 578,
+      "aa_std": 0.0266,
+      "approx_mde": 0.0745
+    }
+  ],
+  "mde_80": {
+    "revenue/cuped": 0.10866666666666668,
+    "revenue/paired_cuped": 0.11446808510638298,
+    "revenue/simple": null,
+    "units/cuped": 0.07737226277372264,
+    "units/paired_cuped": 0.0760344827586207,
+    "units/simple": null
+  },
+  "simulated_test": {
+    "true_elasticity": -1.2947858707275777,
+    "n_regions": 578,
+    "n_treated": 289,
+    "pre_period_std_mean_diff": -0.04526798195398577,
+    "implied_elasticity": {
+      "estimate": -1.179672849827236,
+      "ci_low": -1.7806938447611826,
+      "ci_high": -0.6112230269108445
+    },
+    "results": {
+      "units": {
+        "effect": -2.2623,
+        "relative_effect": -0.10634,
+        "ci_low": -0.1561,
+        "ci_high": -0.05659,
+        "p_value": 3e-05,
+        "se": 0.53888,
+        "expected_from_elasticity": -0.1161
+      },
+      "revenue": {
+        "effect": 29.92501,
+        "relative_effect": 0.01234,
+        "ci_low": -0.05694,
+        "ci_high": 0.08161,
+        "p_value": 0.72662,
+        "se": 85.54832,
+        "expected_from_elasticity": -0.02771
+      },
+      "profit": {
+        "effect": 142.5666,
+        "relative_effect": 0.14694,
+        "ci_low": 0.07214,
+        "ci_high": 0.22174,
+        "p_value": 0.00013,
+        "se": 36.94433,
+        "expected_from_elasticity": 0.10488
+      }
+    }
+  }
+}

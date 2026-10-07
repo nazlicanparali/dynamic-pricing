@@ -1,0 +1,64 @@
+# All the knobs for the pipeline live here so runs are reproducible.
+# Paths are relative to the repo root.
+
+seed: 42
+
+data:
+  raw_dir: data/raw
+  start_date: "2017-01-01"   # very few orders before this
+  end_date: "2018-08-22"     # order volume collapses after this (end of the export, not real demand)
+
+paths:
+  outputs: outputs
+  figures: reports/figures
+
+forecast:
+  n_categories: 15        # top categories by volume, they cover ~80% of items
+  horizon: 7              # one model per lead time, 1..7 days ahead
+  n_folds: 6
+  fold_days: 28
+  model:                  # kept small on purpose: short, noisy series. A few other settings
+    max_iter: 300         # I tried were all within +-0.005 WAPE of this one.
+    learning_rate: 0.03
+    max_leaf_nodes: 15
+    min_samples_leaf: 50
+    l2_regularization: 1.0
+
+elasticity:
+  min_weeks: 8            # listing must sell in at least this many weeks
+  min_price_cv: 0.02      # and its price must actually move (coefficient of variation)
+  min_listings: 15        # categories with fewer listings get only the pooled estimate
+
+optimization:
+  gross_margin: 0.40      # Olist has no cost data, so this is an assumption (cost = 60% of price)
+  max_price_change: 0.10  # guardrail: never move more than +-10% from today's price
+  grid_step: 0.01
+  n_draws: 4000           # draws from the elasticity posterior for the risk numbers
+
+rl:
+  category: watches_gifts # weekday pattern + elasticity come from this category,
+                          # base demand from its best-selling listing (~1.2 units/day)
+  horizon_days: 28
+  inventory_ratio: 0.75   # stock = 75% of expected demand at the base price -> stock is scarce
+  salvage_ratio: 0.30     # leftover units are cleared at 30% of the base price
+  price_multipliers: [0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
+  elasticity_scenarios: [-1.2, estimate, -3.0]   # 'estimate' = the category's shrunk estimate
+  episodes: 100000
+  alpha_power: 0.7        # learning rate = 1 / visits ** 0.7 for each (state, action)
+  eps_start: 1.0
+  eps_end: 0.01
+  eval_episodes: 5000
+  scale_factors: [0.5, 1, 2, 4, 8, 16]   # for the "does dynamic pricing matter at scale?" check
+
+ab_test:
+  unit: zip3              # 3-digit CEP prefix; cities are too few and too unequal
+  test_start: "2018-06-01"
+  pre_weeks: 16           # longer pre-period = better CUPED covariate
+  test_weeks: 8
+  min_pre_orders: 10
+  winsorize_q: 0.99       # cap item prices at the 99th percentile for revenue metrics
+  price_change: 0.10      # the change the optimisation step recommends
+  n_aa_sims: 2000
+  lifts: [0.02, 0.04, 0.06, 0.08, 0.10, 0.12, 0.15, 0.20]
+  n_power_sims: 500
+  alpha: 0.05

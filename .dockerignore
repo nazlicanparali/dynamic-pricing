@@ -1,0 +1,9 @@
+data/
+reports/
+notebooks/
+tests/
+.git/
+.github/
+__pycache__/
+.pytest_cache/
+mlruns/

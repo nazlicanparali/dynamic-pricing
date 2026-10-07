@@ -1,0 +1,4 @@
+method,elasticity,se,n_obs,n_listings
+"log-log OLS, positive weeks, pooled (listing + week FE)",-0.5093,0.0748,14806.0,994.0
+"log-log OLS, positive weeks, random-effects mean over categories",-0.4176,0.0795,,
+"Poisson FE incl. zero weeks, random-effects mean over categories (main)",-1.2948,0.2847,,

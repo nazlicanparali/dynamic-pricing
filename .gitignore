@@ -1,0 +1,23 @@
+# raw data is not mine to redistribute, download it from Kaggle (see data/README.md)
+data/raw/*
+!data/raw/.gitkeep
+
+# local run log and tracking
+outputs/runs.jsonl
+mlruns/
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg-info/
+
+# editors / OS
+.vscode/
+.idea/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
